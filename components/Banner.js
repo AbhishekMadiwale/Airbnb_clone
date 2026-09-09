@@ -6,8 +6,8 @@ function Banner() {
     <div className="relative h-50 sm:h-100 lg:h-125 xl:h-150 ">
       <Image
         src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        layout="fill"
-        objectFit="cover"
+        fill
+        className="object-cover"
         alt="banner image"
       />
       <div className="absolute text-center top-1/2 w-full text-white">

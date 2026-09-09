@@ -14,9 +14,8 @@ function Header() {
       <div className="relative flex items-center h-15 cursor-pointer my-auto">
         <Image
           src="https://download.logo.wine/logo/Airbnb/Airbnb-Logo.wine.png"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="left"
+          fill
+          className="object-contain object-left"
           alt="logo"
         />
       </div>
