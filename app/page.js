@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Banner from "@/components/Banner";
 import SmallCard from "@/components/SmallCard";
 import MediumCard from "@/components/MediumCard";
+import LargeCard from "@/components/LargeCard";
 
 export const revalidate = 3600;
 
@@ -39,12 +40,23 @@ export default async function getStaticProps() {
         <section>
           <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
 
-          <div className="flex space-x-3 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            className="flex space-x-3 overflow-x-auto overflow-y-hidden 
+            [scrollbar-none] [&::-webkit-scrollbar]:hidden
+            p-4"
+          >
             {cardData?.map(({ img, title }) => (
               <MediumCard key={img} img={img} title={title} />
             ))}
           </div>
         </section>
+
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The Greatest Outdoors"
+          description="Whishlist curated by Airbnb"
+          buttonText="Get Inspired"
+        />
       </main>
     </div>
   );
