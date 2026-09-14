@@ -3,6 +3,7 @@ import Banner from "@/components/Banner";
 import SmallCard from "@/components/SmallCard";
 import MediumCard from "@/components/MediumCard";
 import LargeCard from "@/components/LargeCard";
+import FooterComponent from "@/components/FooterComponent";
 
 export const revalidate = 3600;
 
@@ -58,6 +59,8 @@ export default async function getStaticProps() {
           buttonText="Get Inspired"
         />
       </main>
+
+      <FooterComponent />
     </div>
   );
 }
