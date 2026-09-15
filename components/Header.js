@@ -12,12 +12,14 @@ import {
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
+import { useRouter } from "next/navigation";
 
-function Header() {
+function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const router = useRouter();
 
   function handleSelect(ranges) {
     setStartDate(ranges.selection.startDate);
@@ -34,11 +36,23 @@ function Header() {
     setSearchInput("");
   }
 
+  const search = () => {
+    const searchParams = new URLSearchParams({
+      location: searchInput,
+      startDate: startDate.toISOString(),
+      endDate: endDate.toISOString(),
+      numberOfGuests: String(numberOfGuests),
+    });
+
+    router.push(`/search?${searchParams.toString()}`);
+  };
+
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 shadow-md bg-white px-3 md:px-10">
       {/* Left */}
       <div className="relative flex items-center h-15 cursor-pointer my-auto">
         <Image
+          onClick={() => router.push("/")}
           src="https://download.logo.wine/logo/Airbnb/Airbnb-Logo.wine.png"
           fill
           className="object-contain object-left"
@@ -47,15 +61,22 @@ function Header() {
       </div>
 
       {/* Middle */}
-      <div className="flex items-center justify-between border-gray-400 border-2 rounded-full p-3 m-2 md:shadow-sm">
+      <div
+        className="flex items-center justify-between border-gray-400 border-2 
+        rounded-full p-3 m-2 md:shadow-sm"
+      >
         <input
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          className="pl-2 bg-transparent outline-transparent"
+          className="grow placeholder-gray-600 text-sm 
+          pl-5 bg-transparent outline-transparent flex-wrap"
           type="text"
-          placeholder="Search for stay"
+          placeholder={placeholder || "Search for stay"}
         />
-        <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full cursor-pointer p-1 md:mx-2" />
+        <MagnifyingGlassIcon
+          className="hidden md:inline-flex h-8 bg-red-400 
+          text-white rounded-full cursor-pointer p-1 md:mx-2"
+        />
       </div>
 
       {/* Right */}
@@ -97,7 +118,12 @@ function Header() {
             >
               Cancel
             </button>
-            <button className="grow text-red-500 cursor-pointer">Search</button>
+            <button
+              onClick={search}
+              className="grow text-red-500 cursor-pointer"
+            >
+              Search
+            </button>
           </div>
         </div>
       )}
