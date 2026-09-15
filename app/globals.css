@@ -3,3 +3,12 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
 }
+
+@taiwind component;
+
+@layer components {
+  .button {
+    @apply mx-2 px-4 py-2 border rounded-full cursor-pointer hover:shadow-xl
+                active:scale-95 transition transform duration-200 ease-out border-gray-200;
+  }
+}
