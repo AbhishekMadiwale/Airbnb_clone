@@ -107,7 +107,7 @@ function Header({ placeholder }) {
               className="w-12 pl-2 ml-2 outline-none text-red-400"
               value={numberOfGuests}
               min={1}
-              max={6}
+              max={10}
               onChange={(e) => setNumberOfGuests(e.target.value)}
             />
           </div>
