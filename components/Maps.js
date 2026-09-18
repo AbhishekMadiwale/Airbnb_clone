@@ -31,7 +31,7 @@ function Maps({ locations = [] }) {
         zoom: 11,
       }}
       style={{ width: "100%", height: "32rem" }}
-      mapboxAccessToken={process.env.mapbox_key}
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       mapStyle="mapbox://styles/abhishek-06/cmu6mfvsm001h01qv8hcf3fye"
     >
       {locations.map((location) => {
