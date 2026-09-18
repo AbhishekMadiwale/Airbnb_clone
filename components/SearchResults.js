@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import FooterComponent from "@/components/FooterComponent";
 import { format } from "date-fns";
 import Image from "next/image";
+import Maps from "./Maps";
 
 function SearchResults({ searchParams, searchResultsData }) {
   const { location, startDate, endDate, numberOfGuests } = searchParams;
@@ -23,7 +24,7 @@ function SearchResults({ searchParams, searchResultsData }) {
           numberOfGuests || 0
         } guests`}
       />
-      <main className="grow px-6 pt-14">
+      <main className="flex flex-row grow px-6 pt-14">
         <section>
           <p className="text-sm">
             {listings.length}+ stays - {range} for {numberOfGuests || 0} guests
@@ -68,6 +69,10 @@ function SearchResults({ searchParams, searchResultsData }) {
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="hidden xl:inline-flex">
+          <Maps />
         </section>
       </main>
       <FooterComponent />

@@ -6,6 +6,7 @@ import FooterComponent from "@/components/FooterComponent";
 import { useSearchParams } from "next/navigation";
 import { format } from "date-fns";
 import InfoCard from "@/components/InfoCard";
+import Maps from "@/components/Maps";
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -22,7 +23,7 @@ function SearchResults() {
 
         const data = await response.json();
         setSearchData(data);
-        console.log("Search data:", data);
+        // console.log("Search data:", data);
       } catch (error) {
         console.error("Failed to fetch search data:", error);
       }
@@ -65,21 +66,27 @@ function SearchResults() {
             <p className="button">More filters</p>
           </div>
 
-          <div className="flex flex-col">
-            {searchData.map(
-              ({ img, location, title, description, star, price, total }) => (
-                <InfoCard
-                  key={img}
-                  img={img}
-                  location={location}
-                  title={title}
-                  description={description}
-                  star={star}
-                  price={price}
-                  total={total}
-                />
-              ),
-            )}
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div className="flex flex-col">
+              {searchData.map(
+                ({ img, location, title, description, star, price, total }) => (
+                  <InfoCard
+                    key={img}
+                    img={img}
+                    location={location}
+                    title={title}
+                    description={description}
+                    star={star}
+                    price={price}
+                    total={total}
+                  />
+                ),
+              )}
+            </div>
+
+            <section className="min-w-0 lg:sticky lg:top-20 lg:self-start">
+              <Maps locations={searchData} />
+            </section>
           </div>
         </section>
       </main>

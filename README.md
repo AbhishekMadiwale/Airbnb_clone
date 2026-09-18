@@ -5,3 +5,4 @@
   - NextJS
   - TailwindCSS
   - Heroicons
+  - using mapbox to render the map
