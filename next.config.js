@@ -21,8 +21,7 @@ const nextConfig = {
     ],
   },
   env: {
-    mapbox_key:
-      "pk.eyJ1IjoiYWJoaXNoZWstMDYiLCJhIjoiY211Nm1jOHV3MGVxejJ4czluYmdrMGNmaiJ9.7E_DLfmT9TRD6NuHVDO0RQ",
+    mapbox_key: process.env.NEXT_PUBLIC_MAPBOX_KEY,
   },
 };
 
